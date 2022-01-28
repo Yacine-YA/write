@@ -1,0 +1,8 @@
+{
+  "name": "Write",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "63e2e0d3"
+}
