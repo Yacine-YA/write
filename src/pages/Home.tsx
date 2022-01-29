@@ -1,20 +1,46 @@
 import MessageListItem from '../components/MessageListItem';
 import { useState } from 'react';
 import { Message, getMessages } from '../data/messages';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+
 import {
   IonContent,
   IonHeader,
+  IonFooter,
   IonList,
   IonPage,
   IonRefresher,
   IonRefresherContent,
   IonTitle,
   IonToolbar,
-  useIonViewWillEnter
+  useIonViewWillEnter,
+  IonText,
+  IonTextarea,
+  IonButton
+
 } from '@ionic/react';
 import './Home.css';
 
 const Home: React.FC = () => {
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBH3eIEagsW0ECPE0mtA9Oh12pnmtLoovA",
+  authDomain: "write-e4f94.firebaseapp.com",
+  projectId: "write-e4f94",
+  storageBucket: "write-e4f94.appspot.com",
+  messagingSenderId: "735922413205",
+  appId: "1:735922413205:web:01cfd62f1ccb7a9c06059c",
+  measurementId: "G-H5B131J514"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
   const [messages, setMessages] = useState<Message[]>([]);
 
@@ -22,6 +48,10 @@ const Home: React.FC = () => {
     const msgs = getMessages();
     setMessages(msgs);
   });
+
+  function setFirebase() {
+
+  }
 
   const refresh = (e: CustomEvent) => {
     setTimeout(() => {
@@ -33,26 +63,37 @@ const Home: React.FC = () => {
     <IonPage id="home-page">
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Inbox</IonTitle>
+
+          <IonTitle>Write</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonRefresher slot="fixed" onIonRefresh={refresh}>
-          <IonRefresherContent></IonRefresherContent>
-        </IonRefresher>
+  
 
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">
-              Inbox
+
+              
             </IonTitle>
           </IonToolbar>
         </IonHeader>
 
-        <IonList>
-          {messages.map(m => <MessageListItem key={m.id} message={m} />)}
-        </IonList>
+        <IonTextarea id ="page" name="page" rows={37} placeholder="Ici...">
+
+          
+        </IonTextarea>
+
+        
+
+          <IonButton  expand="block" onClick={() => setFirebase()} ></IonButton>
+          
       </IonContent>
+      <IonFooter>
+
+        
+  
+      </IonFooter>
     </IonPage>
   );
 };
