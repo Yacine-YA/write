@@ -86,7 +86,7 @@ const analytics = getAnalytics(app);
 
         
 
-          <IonButton  expand="block" onClick={() => setFirebase()} ></IonButton>
+          <IonButton  expand="block"  > Save</IonButton>
           
       </IonContent>
       <IonFooter>
