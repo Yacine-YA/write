@@ -27,16 +27,6 @@ import './Home.css';
 
 const Home: React.FC = () => {
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBH3eIEagsW0ECPE0mtA9Oh12pnmtLoovA",
-  authDomain: "write-e4f94.firebaseapp.com",
-  projectId: "write-e4f94",
-  storageBucket: "write-e4f94.appspot.com",
-  messagingSenderId: "735922413205",
-  appId: "1:735922413205:web:01cfd62f1ccb7a9c06059c",
-  measurementId: "G-H5B131J514"
-};
-
 
 
   const [messages, setMessages] = useState<Message[]>([]);
