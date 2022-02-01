@@ -11,6 +11,7 @@ import {
   IonContent,
   IonHeader,
   IonFooter,
+  IonAlert,
   IonList,
   IonPage,
   IonRefresher,
@@ -27,6 +28,8 @@ import './Home.css';
 
 const Home: React.FC = () => {
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const [showAlert1, setShowAlert1] = useState(false);
+
 
 
   const [messages, setMessages] = useState<Message[]>([]);
@@ -36,9 +39,7 @@ const Home: React.FC = () => {
     setMessages(msgs);
   });
 
-  function setFirebase() {
-
-  }
+  
 
   const refresh = (e: CustomEvent) => {
     setTimeout(() => {
@@ -61,19 +62,28 @@ const Home: React.FC = () => {
           <IonToolbar>
             <IonTitle size="large">
 
+              Write
+
               
             </IonTitle>
           </IonToolbar>
         </IonHeader>
 
-        <IonTextarea id ="page" name="page" rows={37} placeholder="Ici...">
+        <IonTextarea id ="page" name="page" rows={37} placeholder="">
 
           
         </IonTextarea>
 
         
 
-          <IonButton  expand="block"  > Save</IonButton>
+        <IonButton onClick={() => setShowAlert1(true)} expand="block">Save</IonButton>  
+        <IonAlert
+          isOpen={showAlert1}
+          onDidDismiss={() => setShowAlert1(false)}
+     
+          message={"Les données sont stockés dans la mémoire vive de l'appareil vous pouvez quitter l'application"}
+          buttons={['Ok']}
+        />        
           
       </IonContent>
       <IonFooter>
